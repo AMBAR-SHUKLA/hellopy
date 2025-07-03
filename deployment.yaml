@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hellok8s-v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hellok8s-v1
+  template:
+    metadata:
+      labels:
+        app: hellok8s-v1
+    spec:
+      containers:
+        - name: hellok8s-container-v1
+          image: ambarshukla123/hellok8s:v1
+          ports:
+            - containerPort: 4567
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hellok8s-v2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hellok8s-v2
+  template:
+    metadata:
+      labels:
+        app: hellok8s-v2
+    spec:
+      containers:
+        - name: hellok8s-container-v2
+          image: ambarshukla123/hellok8s:v1
+          ports:
+            - containerPort: 4567
